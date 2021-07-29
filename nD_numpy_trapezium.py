@@ -10,6 +10,7 @@ import numpy as np
 m, k, T = (1.67493E-27, 1.38064852E-23, 1E5)
 
 ## Define functions here ------------------------------------------------------
+## These functions are included as examples
 
 def square(x):
     
@@ -33,9 +34,9 @@ def triple_maxwellian(xlist):
 
 ## ----------------------------------------------------------------------------
 
-## n-D solutions --------------------------------------------------------------
-
 def create_ordered_sets(x, dims): # x is a list of length n
+    
+    '''Creates an n-dimensional coordinate grid'''
     
     print ()
     print ("Creating the coordinate system, this may take a little while...")
@@ -43,6 +44,8 @@ def create_ordered_sets(x, dims): # x is a list of length n
     return np.array(np.meshgrid(*x)).T.reshape(-1, dims)
 
 def get_axes(ordered_sets, dims): # ordered_sets should be as the object produced above
+    
+    '''Takes the coordinate grid and outputs 1D arrays for each variable, suitable for feeding into the functions above'''
 
     print ()
     print ("Rearranging into axes, bear with me...")
@@ -55,6 +58,8 @@ def get_axes(ordered_sets, dims): # ordered_sets should be as the object produce
     
 
 def nD_trapzf(func, a, b, n, dims): # a, b, n are lists of length n
+    
+    '''This is the main function, it returns the final numerical approximation'''
 
     x = [np.linspace(a[i], b[i], n[i]) for i in range(len(a))]
     
@@ -79,6 +84,8 @@ def nD_trapzf(func, a, b, n, dims): # a, b, n are lists of length n
     
 
 if __name__ == "__main__":
+    
+    '''Examples of the structures of a, b, n & dims, and how to call the main function trapzf'''
     
     a = [0, 0]
     b = [80000, 80000]
